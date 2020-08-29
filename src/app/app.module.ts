@@ -1,16 +1,24 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "@nativescript/angular";
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { ItemsComponent } from "./item/items.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
-
-// Uncomment and add to NgModule imports if you need to use two-way binding
+// import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
-// Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
-// import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+
+
+import { AppComponent } from "./app.component";
+import { MenuComponent } from './menu/menu.component';
+
+
+import { DishService } from './services/dish.service';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
+
+
+
+import { baseURL } from './shared/baseurl';
+
+
 
 @NgModule({
     bootstrap: [
@@ -18,14 +26,19 @@ import { ItemDetailComponent } from "./item/item-detail.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        NativeScriptModule,
+        HttpClientModule
     ],
     declarations: [
         AppComponent,
-        ItemsComponent,
-        ItemDetailComponent
+        MenuComponent
     ],
-    providers: [],
+    providers:[
+        {provide: 'baseURL', useValue: baseURL},
+        DishService,
+        ProcessHTTPMsgService
+    ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
