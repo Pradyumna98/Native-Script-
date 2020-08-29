@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from "./app-routing.module";
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 
 
 
@@ -30,7 +31,9 @@ import { baseURL } from './shared/baseurl';
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptModule,
-        HttpClientModule
+        HttpClientModule,
+        NativeScriptUISideDrawerModule
+
     ],
     declarations: [
         AppComponent,
