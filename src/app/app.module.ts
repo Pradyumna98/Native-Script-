@@ -3,10 +3,11 @@ import { NativeScriptModule } from "@nativescript/angular";
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from "./app-routing.module";
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
-// import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,8 @@ import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-
+import { ReservationComponent } from './reservation/reservation.component';
+import { ReservationModalComponent } from "./reservationmodal/reservationmodal.component";
 
 
 
@@ -47,6 +49,8 @@ import { baseURL } from './shared/baseurl';
             'fa': './fonts/font-awesome.min.css'
         }),
         NativeScriptUIListViewModule,
+        NativeScriptFormsModule,
+        ReactiveFormsModule
                 
 
     ],
@@ -55,10 +59,15 @@ import { baseURL } from './shared/baseurl';
         MenuComponent,
         DishdetailComponent,
         HomeComponent,
-        FavoritesComponent
-
+        FavoritesComponent,
+        ReservationComponent,
+        ReservationModalComponent
 
     ],
+
+    entryComponents: [ReservationModalComponent],
+
+    
     providers:[
         {provide: 'baseURL', useValue: baseURL},
         DishService,
