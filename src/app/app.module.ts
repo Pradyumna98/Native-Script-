@@ -5,6 +5,8 @@ import { AppRoutingModule } from "./app-routing.module";
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
+import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
+
 
 
 
@@ -19,6 +21,8 @@ import { DishService } from './services/dish.service';
 import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
+import { FavoriteService } from './services/favorite.service';
+
 
 
 
@@ -35,7 +39,10 @@ import { baseURL } from './shared/baseurl';
         AppRoutingModule,
         NativeScriptModule,
         HttpClientModule,
-        NativeScriptUISideDrawerModule
+        NativeScriptUISideDrawerModule,
+        TNSFontIconModule.forRoot({
+            'fa': './fonts/font-awesome.min.css'
+        })
 
     ],
     declarations: [
@@ -50,7 +57,9 @@ import { baseURL } from './shared/baseurl';
         DishService,
         ProcessHTTPMsgService,
         PromotionService,
-        LeaderService
+        LeaderService,
+        FavoriteService
+
     ],
     schemas: [
         NO_ERRORS_SCHEMA
