@@ -6,6 +6,7 @@ import { AppRoutingModule } from "./app-routing.module";
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 
 
 
@@ -14,6 +15,8 @@ import { AppComponent } from "./app.component";
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { HomeComponent } from './home/home.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+
 
 
 
@@ -42,14 +45,18 @@ import { baseURL } from './shared/baseurl';
         NativeScriptUISideDrawerModule,
         TNSFontIconModule.forRoot({
             'fa': './fonts/font-awesome.min.css'
-        })
+        }),
+        NativeScriptUIListViewModule,
+                
 
     ],
     declarations: [
         AppComponent,
         MenuComponent,
         DishdetailComponent,
-        HomeComponent
+        HomeComponent,
+        FavoritesComponent
+
 
     ],
     providers:[
