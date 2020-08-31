@@ -4,8 +4,8 @@
 </ActionBar>
 <ScrollView orientation="vertical">
     <GridLayout class="m-5" rows="auto auto auto" *ngIf="dish" (swipe)="onSwipe($event)">
-        <StackLayout id="cardLayout" row="0" class="p-10 border">
-            <Image id="cardImage" [src]="BaseURL + dish.image" [visibility]="!(showComments) ? 'visible' : 'collapsed'"></Image>
+        <StackLayout id="cardLayout" row="0" class="p-10 border"> 
+            <Image id="cardImage" [src]="baseURL + dish.image" [visibility]="!(showComments) ? 'visible' : 'collapsed'"></Image>
             <StackLayout>
                 <Label class="h2" [text]="dish.name"></Label>
                 <Label class="body" [text]="dish.description" textWrap="true"></Label>

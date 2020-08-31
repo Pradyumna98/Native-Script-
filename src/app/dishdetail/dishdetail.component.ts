@@ -5,25 +5,20 @@ import { DishService } from '../services/dish.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { switchMap } from 'rxjs/operators';
-
-
 import { action } from "ui/dialogs";
 import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
 import { CommentModalComponent } from '../comment/comment.component';
 import 'rxjs/add/operator/switchMap';
+import * as SocialShare from "nativescript-social-share";
+import { ImageSource, fromUrl } from "image-source";
 import { Page } from "ui/page";
 import { Animation, AnimationDefinition } from "ui/animation";
 import { View } from "ui/core/view";
 import { SwipeGestureEventData, SwipeDirection } from "ui/gestures";
 import { Color } from 'color';
 import * as enums from "ui/enums";
-import * as SocialShare from "nativescript-social-share";
-import { ImageSource, fromUrl } from "image-source";
-
-
 import { FavoriteService } from '../services/favorite.service';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
-
 import { Toasty } from 'nativescript-toasty';
 
 
@@ -43,11 +38,12 @@ export class DishdetailComponent implements OnInit {
   avgstars: string;
   numcomments: number;
   favorite: boolean = false;
+
   showComments: boolean = false;
+
   cardImage: View;
   commentList: View;
   cardLayout: View;
-
 
 
   constructor(private dishservice: DishService,
