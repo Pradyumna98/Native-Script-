@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import * as app from "application";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -6,6 +6,7 @@ import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nat
 import { filter } from "rxjs/operators";
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
+import { PlatformService } from './services/platform.service'; 
 
 
 import { login, LoginResult } from "ui/dialogs";
@@ -15,13 +16,14 @@ import { getString, setString } from "application-settings";
     selector: "ns-app",
     templateUrl: "app.component.html"
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy { 
     private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
 
     constructor(private router: Router,
          private routerExtensions: RouterExtensions,
-        private fonticon: TNSFontIconService) {
+        private fonticon: TNSFontIconService,
+        private platformService: PlatformService) {
         // Use the component constructor to inject services.
     }
 
@@ -29,10 +31,22 @@ export class AppComponent implements OnInit {
         this._activatedUrl = "/menu";
         this._sideDrawerTransition = new SlideInOnTopTransition();
 
+        this.platformService.printPlatformInfo(); 
+        this.platformService.startMonitoringNetwork()
+        .subscribe((message: string) => {
+          console.log(message); 
+
         this.router.events
         .pipe(filter((event: any) => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
     }
+
+    ngOnDestroy() { 
+    
+        this.platformService.stopMonitoringNetwork(); 
+        
+      } 
+      
 
     get sideDrawerTransition(): DrawerTransitionBase {
         return this._sideDrawerTransition;
@@ -53,4 +67,5 @@ export class AppComponent implements OnInit {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
     }
+    
 }
