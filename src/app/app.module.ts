@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ReservationModalComponent } from "./reservationmodal/reservationmodal.component";
+import { UserAuthComponent } from "./userauth/userauth.component"; 
 
 
 
@@ -63,8 +64,8 @@ import { baseURL } from './shared/baseurl';
         HomeComponent,
         FavoritesComponent,
         ReservationComponent,
-        ReservationModalComponent
-
+        ReservationModalComponent,
+        UserAuthComponent 
     ],
 
     entryComponents: [ReservationModalComponent],

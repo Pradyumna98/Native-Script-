@@ -39,25 +39,6 @@ export class AppComponent implements OnInit {
     }
 
 
-    displayLoginDialog() {
-        let options = {
-            title: "Login",
-            message: 'Type Your Login Credentials',
-            userName: getString("userName", ""),
-            password: getString("password",""),
-            okButtonText: "Login",
-            cancelButtonText: "Cancel"
-        }
-
-        login(options)
-            .then((loginResult: LoginResult) => {
-                setString("userName", loginResult.userName);
-                setString("password", loginResult.password);
-            },
-            () => { console.log('Login cancelled'); 
-        });
-    }
-    
     isComponentSelected(url: string): boolean {
         return this._activatedUrl === url;
     }
