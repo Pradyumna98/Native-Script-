@@ -23,6 +23,7 @@ import { Toasty } from 'nativescript-toasty';
 
 
 
+
 @Component({
   selector: 'app-dishdetail',
     moduleId: module.id,
@@ -212,14 +213,14 @@ export class DishdetailComponent implements OnInit {
 
 
   socialShare() {
-      let image: ImageSource;
+    let image: ImageSource;
 
-      fromUrl(this.BaseURL + this.dish.image)
-          .then((img: ImageSource) => {
-              image = img;
-              SocialShare.shareImage(image, "How would you like to share this image?")
-          })
-          .catch(() => { console.log('Error loading image'); });
+    fromUrl(this.BaseURL + this.dish.image)
+     .then((img: ImageSource) => {
+       image = img; 
+        SocialShare.shareImage(image, "How would you like to share this image?")
+      })
+     .catch(()=> { console.log('Error loading image'); });
 
   }
 
